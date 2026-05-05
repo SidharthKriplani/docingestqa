@@ -153,3 +153,59 @@ def test_split_quality_passes_clean_chunks():
     ]
     result = check_split_quality(chunks, AuditConfig())
     assert result.status == "PASS"
+
+
+# ── edge case tests ───────────────────────────────────────────────────────────
+
+def test_empty_chunk_list_metadata_completeness():
+    """Empty chunk list: no missing metadata → PASS with zero counts."""
+    result = check_metadata_completeness([], AuditConfig())
+    assert result.status == "PASS"
+    assert result.metrics["missing_source_count"] == 0
+    assert result.metrics["missing_page_count"] == 0
+
+
+def test_empty_chunk_list_duplicates():
+    """Empty chunk list produces no duplicate pairs."""
+    result = check_duplicates([], AuditConfig())
+    assert result.metrics["duplicate_pair_count"] == 0
+
+
+def test_single_chunk_no_overlap():
+    """A single chunk has no pairs to compare — overlap check must not crash."""
+    chunks = [Chunk(text="The system stores credentials securely using bcrypt.", source="a.pdf", page=1)]
+    result = check_chunk_overlap(chunks, AuditConfig())
+    assert result.metrics["total_flagged_pairs"] == 0
+
+
+def test_all_chunks_missing_metadata():
+    """When every chunk lacks source and page, rate hits 1.0 → FAIL."""
+    chunks = [Chunk(text="orphan chunk one"), Chunk(text="orphan chunk two")]
+    result = check_metadata_completeness(chunks, AuditConfig())
+    assert result.status == "FAIL"
+    assert result.metrics["missing_source_count"] == 2
+    assert result.metrics["missing_page_count"] == 2
+
+
+def test_ocr_noise_clean_chunks_passes():
+    """Chunks with no replacement characters → PASS."""
+    chunks = [
+        Chunk(text="Clean text without any OCR artifacts.", source="a.pdf", page=1),
+        Chunk(text="Another well-extracted sentence from the document.", source="a.pdf", page=2),
+    ]
+    result = check_ocr_noise(chunks, AuditConfig())
+    assert result.status == "PASS"
+    assert result.metrics["noisy_chunk_count"] == 0
+
+
+def test_chunk_length_all_valid_passes():
+    """Chunks within min/max bounds produce a PASS result."""
+    chunks = [
+        Chunk(text="A" * 50, source="a.pdf", page=1),
+        Chunk(text="B" * 80, source="a.pdf", page=2),
+    ]
+    result = check_chunk_length(chunks, AuditConfig(min_chunk_chars=10, max_chunk_chars=100))
+    assert result.status == "PASS"
+    assert result.metrics["empty_chunk_count"] == 0
+    assert result.metrics["short_chunk_count"] == 0
+    assert result.metrics["long_chunk_count"] == 0
