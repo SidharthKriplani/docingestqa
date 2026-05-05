@@ -1,0 +1,42 @@
+[
+  {
+    "source": "annual_report_2024.pdf",
+    "pages": 12
+  },
+  {
+    "source": "onboarding_guide.pdf",
+    "pages": 8
+  },
+  {
+    "source": "product_spec_v3.pdf",
+    "pages": 6
+  },
+  {
+    "source": "privacy_policy.pdf",
+    "pages": 5
+  },
+  {
+    "source": "research_paper.pdf",
+    "pages": 10
+  },
+  {
+    "source": "user_manual.pdf",
+    "pages": 7
+  },
+  {
+    "source": "compliance_checklist.pdf",
+    "pages": 4
+  },
+  {
+    "source": "technical_architecture.pdf",
+    "pages": 9
+  },
+  {
+    "source": "release_notes_v2.pdf",
+    "pages": 3
+  },
+  {
+    "source": "faq_document.pdf",
+    "pages": 6
+  }
+]

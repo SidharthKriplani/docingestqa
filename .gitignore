@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+outputs/*.json
+outputs/*.md
+outputs/*.html
+!outputs/.gitkeep
+
+# build artifacts from v0.1 packaging
+docingestqa_v0_1_0_build.zip
+docingestqa_v0_1_0/
+extracted/
