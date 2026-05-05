@@ -312,3 +312,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Issues and PRs welcome.
 ## License
 
 MIT © Sidharth Kriplani
+
+---
+
+## How This Connects
+
+DocIngestQA is the **pre-indexing document quality gate** for RAG systems in this portfolio:
+
+- **DevPulse:** DevPulse's 9-chunk demo corpus, and any expansion of that corpus with real documentation, passes through DocIngestQA before indexing. The 11 checks catch OCR noise (which would corrupt BM25 term statistics), missing pages (which would create retrieval blind spots), and poor split boundaries (which would fragment the context that DevPulse's conflict detector needs). DevPulse's Recall@5 = 0.97 depends on clean, well-bounded chunks.
+- **Any RAG pipeline:** The auditor is document-format agnostic. Whether documents come from PDF extraction, web scraping, or manual authoring, DocIngestQA validates the exported chunk JSONL before the index is built — preventing garbage-in-garbage-out retrieval.
+- **GoldenSetAuditor relationship:** DocIngestQA audits the source corpus; GoldenSetAuditor audits the evaluation set. Both must pass before a RAG system's retrieval metrics are reportable.
