@@ -13,6 +13,11 @@ DocIngestQA answers a question every RAG team must ask before indexing: *are the
 [![CLI](https://img.shields.io/badge/CLI-python--m_docingestqa-42a5f5?style=flat-square)](src/docingestqa/__main__.py)
 [![pip](https://img.shields.io/badge/pip_install-docingestqa-3776AB?style=flat-square&logo=python&logoColor=white)](https://pypi.org/project/docingestqa/)
 
+## Architecture
+![DocIngestQA Architecture](docs/assets/architecture.svg)
+
+---
+
 ## How it works
 
 ```mermaid
@@ -322,3 +327,7 @@ DocIngestQA is the **pre-indexing document quality gate** for RAG systems in thi
 - **DevPulse:** DevPulse's 9-chunk demo corpus, and any expansion of that corpus with real documentation, passes through DocIngestQA before indexing. The 11 checks catch OCR noise (which would corrupt BM25 term statistics), missing pages (which would create retrieval blind spots), and poor split boundaries (which would fragment the context that DevPulse's conflict detector needs). DevPulse's Recall@5 = 0.97 depends on clean, well-bounded chunks.
 - **Any RAG pipeline:** The auditor is document-format agnostic. Whether documents come from PDF extraction, web scraping, or manual authoring, DocIngestQA validates the exported chunk JSONL before the index is built — preventing garbage-in-garbage-out retrieval.
 - **GoldenSetAuditor relationship:** DocIngestQA audits the source corpus; GoldenSetAuditor audits the evaluation set. Both must pass before a RAG system's retrieval metrics are reportable.
+
+---
+
+Part of a broader ML/LLM engineering toolkit. See also: [LendFlow](https://github.com/SidharthKriplani/lendflow) · [AgentReliabilityLab](https://github.com/SidharthKriplani/agentreliabilitylab) · [NexusSupply](https://github.com/SidharthKriplani/nexussupply) · [GoldenSetAuditor](https://github.com/SidharthKriplani/goldensetauditor) · [TrialCheck](https://github.com/SidharthKriplani/trialcheck)
