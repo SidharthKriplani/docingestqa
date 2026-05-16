@@ -1,0 +1,109 @@
+<svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="500" fill="url(#bg)"/>
+
+  <!-- ── HEADER BAR ── -->
+  <rect x="0" y="0" width="1000" height="86" fill="#450a0a"/>
+  <line x1="0" y1="86" x2="1000" y2="86" stroke="#ef4444" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- WARN badge -->
+  <rect x="18" y="18" width="72" height="32" rx="6" fill="#f59e0b"/>
+  <text x="54" y="40" text-anchor="middle" fill="#0f172a" font-size="16" font-weight="700">WARN</text>
+  <text x="102" y="36" text-anchor="start" fill="#fca5a5" font-size="13" font-weight="600">3 issues detected</text>
+
+  <!-- Center title -->
+  <text x="500" y="34" text-anchor="middle" fill="#f1f5f9" font-size="18" font-weight="700">DocIngestQA — product_docs_chunks.jsonl</text>
+  <text x="500" y="56" text-anchor="middle" fill="#94a3b8" font-size="11">847 chunks · 12 documents · QA-ID: DIQ-2024-0419 · 2.3s</text>
+
+  <!-- Right badges -->
+  <rect x="834" y="20" width="106" height="22" rx="4" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+  <text x="887" y="36" text-anchor="middle" fill="#60a5fa" font-size="10" font-weight="600">11/11 checks run</text>
+  <rect x="834" y="48" width="148" height="22" rx="4" fill="#14532d" stroke="#22c55e" stroke-width="1"/>
+  <text x="908" y="64" text-anchor="middle" fill="#4ade80" font-size="10" font-weight="600">chunk-level evidence</text>
+
+  <!-- ── CARD 1: OCR NOISE ── -->
+  <rect x="12" y="100" width="312" height="252" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="12" y="100" width="312" height="36" rx="8" fill="#451a03"/>
+  <rect x="12" y="120" width="312" height="16" fill="#451a03"/>
+  <text x="28" y="124" text-anchor="start" fill="#94a3b8" font-size="10" font-weight="700" letter-spacing="1.5">OCR NOISE</text>
+  <rect x="248" y="107" width="64" height="22" rx="4" fill="#f59e0b"/>
+  <text x="280" y="123" text-anchor="middle" fill="#0f172a" font-size="11" font-weight="700">WARN</text>
+
+  <text x="28" y="160" text-anchor="start" fill="#fbbf24" font-size="13" font-weight="600">12 chunks with OCR noise</text>
+
+  <text x="28" y="182" text-anchor="start" fill="#94a3b8" font-size="10">Patterns detected:</text>
+  <text x="28" y="200" text-anchor="start" fill="#fbbf24" font-size="11" font-family="monospace">"l0ad1ng"</text>
+  <text x="28" y="218" text-anchor="start" fill="#fbbf24" font-size="11" font-family="monospace">"c0nfigurat1on"</text>
+  <text x="28" y="236" text-anchor="start" fill="#fbbf24" font-size="11" font-family="monospace">"se1ect"</text>
+
+  <line x1="28" y1="250" x2="308" y2="250" stroke="#475569" stroke-width="0.5"/>
+  <text x="28" y="268" text-anchor="start" fill="#64748b" font-size="10">Noise ratio: 1.4% of chunks</text>
+  <text x="28" y="284" text-anchor="start" fill="#64748b" font-size="10">Source: scanned PDF pages 14–26</text>
+  <rect x="16" y="326" width="304" height="22" rx="4" fill="#451a03" opacity="0.7"/>
+  <text x="168" y="342" text-anchor="middle" fill="#fbbf24" font-size="10">Recommendation: re-OCR source PDFs</text>
+
+  <!-- ── CARD 2: DUPLICATE CHUNKS ── -->
+  <rect x="340" y="100" width="312" height="252" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="340" y="100" width="312" height="36" rx="8" fill="#450a0a"/>
+  <rect x="340" y="120" width="312" height="16" fill="#450a0a"/>
+  <text x="356" y="124" text-anchor="start" fill="#94a3b8" font-size="10" font-weight="700" letter-spacing="1.5">DUPLICATE CHUNKS</text>
+  <rect x="578" y="107" width="64" height="22" rx="4" fill="#ef4444"/>
+  <text x="610" y="123" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">WARN</text>
+
+  <text x="356" y="160" text-anchor="start" fill="#f87171" font-size="13" font-weight="600">8 exact duplicate chunks</text>
+  <text x="356" y="182" text-anchor="start" fill="#f87171" font-size="12">3 near-duplicates (sim &gt; 0.92)</text>
+
+  <line x1="356" y1="200" x2="636" y2="200" stroke="#475569" stroke-width="0.5"/>
+  <text x="356" y="220" text-anchor="start" fill="#94a3b8" font-size="10">doc_id 7  pages 3–4</text>
+  <text x="356" y="238" text-anchor="start" fill="#94a3b8" font-size="10">repeated in doc_id 12</text>
+
+  <text x="356" y="262" text-anchor="start" fill="#64748b" font-size="10">Will inflate retrieval recall artificially</text>
+  <text x="356" y="278" text-anchor="start" fill="#64748b" font-size="10">Deduplication required before indexing</text>
+  <rect x="344" y="326" width="304" height="22" rx="4" fill="#450a0a" opacity="0.7"/>
+  <text x="496" y="342" text-anchor="middle" fill="#f87171" font-size="10">Remove duplicates before indexing</text>
+
+  <!-- ── CARD 3: SPLIT QUALITY ── -->
+  <rect x="668" y="100" width="320" height="252" rx="8" fill="#1e293b" stroke="#22c55e" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="668" y="100" width="320" height="36" rx="8" fill="#14532d"/>
+  <rect x="668" y="120" width="320" height="16" fill="#14532d"/>
+  <text x="684" y="124" text-anchor="start" fill="#94a3b8" font-size="10" font-weight="700" letter-spacing="1.5">SPLIT QUALITY</text>
+  <rect x="904" y="107" width="72" height="22" rx="4" fill="#22c55e"/>
+  <text x="940" y="123" text-anchor="middle" fill="#0f172a" font-size="11" font-weight="700">PASS</text>
+
+  <text x="684" y="158" text-anchor="start" fill="#4ade80" font-size="13" font-weight="600">Avg chunk length: 312 tokens</text>
+
+  <line x1="684" y1="172" x2="972" y2="172" stroke="#475569" stroke-width="0.5"/>
+  <text x="684" y="192" text-anchor="start" fill="#94a3b8" font-size="10">Min: 45 tokens</text>
+  <text x="684" y="210" text-anchor="start" fill="#94a3b8" font-size="10">Max: 512 tokens</text>
+  <text x="684" y="228" text-anchor="start" fill="#94a3b8" font-size="10">StdDev: 87 tokens</text>
+
+  <line x1="684" y1="242" x2="972" y2="242" stroke="#475569" stroke-width="0.5"/>
+  <text x="684" y="260" text-anchor="start" fill="#64748b" font-size="10">Mid-sentence breaks: 3.2% (threshold 10%)</text>
+  <text x="684" y="278" text-anchor="start" fill="#64748b" font-size="10">Overlap consistency: PASS</text>
+
+  <rect x="672" y="326" width="312" height="22" rx="4" fill="#14532d" opacity="0.7"/>
+  <text x="828" y="342" text-anchor="middle" fill="#4ade80" font-size="10">Split boundaries are clean</text>
+
+  <!-- ── SUMMARY BOX ── -->
+  <rect x="12" y="362" width="976" height="96" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="1" filter="url(#shadow)"/>
+  <rect x="12" y="362" width="4" height="96" rx="2" fill="#ef4444"/>
+
+  <text x="30" y="386" text-anchor="start" fill="#f87171" font-size="13" font-weight="700">2 WARN issues · 1 minor quality flag · Index usable after deduplication + OCR fix</text>
+  <text x="30" y="408" text-anchor="start" fill="#94a3b8" font-size="11">Required actions:  Re-OCR scanned pages 14–26  ·  Remove 8 exact duplicates + 3 near-duplicates from index</text>
+  <text x="30" y="428" text-anchor="start" fill="#fbbf24" font-size="11">Split quality is good — no re-chunking required. Fix OCR and deduplication, then index.</text>
+
+  <!-- ── FOOTER ── -->
+  <rect x="0" y="468" width="1000" height="32" fill="#0f172a"/>
+  <line x1="0" y1="468" x2="1000" y2="468" stroke="#475569" stroke-width="0.8"/>
+  <text x="500" y="490" text-anchor="middle" fill="#475569" font-size="10">DOCINGESTQA · Pre-indexing chunk quality auditor for RAG pipelines · No LLM dependency · github.com/SidharthKriplani/docingestqa</text>
+</svg>
