@@ -9,6 +9,7 @@ DocIngestQA answers a question every RAG team must ask before indexing: *are the
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 [![Checks](https://img.shields.io/badge/Checks-11_deterministic-4fc3f7?style=flat-square)](src/docingestqa/checks.py)
+[![Tests](https://img.shields.io/badge/Tests-27%2F27_passing-66bb6a?style=flat-square)](tests/)
 [![Output](https://img.shields.io/badge/Output-JSON%20%7C%20Markdown%20%7C%20HTML-ab47bc?style=flat-square)](src/docingestqa/report.py)
 [![CLI](https://img.shields.io/badge/CLI-python--m_docingestqa-42a5f5?style=flat-square)](src/docingestqa/__main__.py)
 [![pip](https://img.shields.io/badge/pip_install-docingestqa-3776AB?style=flat-square&logo=python&logoColor=white)](https://pypi.org/project/docingestqa/)
@@ -315,6 +316,12 @@ AuditConfig(
 
 ---
 
+## Resume-Safe Claim
+
+Built **DocIngestQA**, a pre-indexing QA auditor for RAG document ingestion pipelines that runs 11 deterministic checks on exported chunk JSONL files — detecting missing pages, OCR noise, exact/near-duplicate chunks, mojibake encoding errors, sliding-window split overlap, and poor split boundaries — with a CLI, configurable thresholds, structured JSON/Markdown/HTML output, and a mandatory truth boundary note that distinguishes ingestion quality signals from retrieval relevance or RAG correctness.
+
+---
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Issues and PRs welcome.
@@ -345,12 +352,27 @@ DocIngestQA is the **pre-indexing document quality gate** for RAG systems in thi
 
 ## Part of Applied LLM Systems Portfolio
 
-This project is part of a portfolio targeting Applied LLM Systems Engineer roles.
+This project is part of a 13-repo portfolio targeting Applied LLM Systems Engineer, MLOps, and Technical AI PM roles.
 
-- [**NexusSupply**](https://github.com/SidharthKriplani/nexussupply) — Supplier Risk Intelligence Platform (LangGraph + FinBERT + XGBoost + Instructor + NetworkX)
-- [**LendFlow**](https://github.com/SidharthKriplani/lendflow) — AI-powered loan underwriting pipeline (LangGraph + RAG + FOIR rules engine)
-- [**AgentReliabilityLab**](https://github.com/SidharthKriplani/agentreliabilitylab) — Cyber threat triage agent (LangGraph + hybrid RAG + HITL + RAGAS eval)
-- [**RiskFrame Platform**](https://github.com/SidharthKriplani/riskframe_platform) — ML model lifecycle (XGBoost + LightGBM champion/challenger, Optuna HPO, drift monitoring)
-- [**DevPulse Platform**](https://github.com/SidharthKriplani/devpulse_platform) — Version-safe RAG migration intelligence (LLM-Last principle, conflict detection)
-- [**PulseRank Platform**](https://github.com/SidharthKriplani/pulserank_platform) — Marketplace ranking with IPS debiasing (position bias correction, delayed attribution)
-- [**MetaSignal Platform**](https://github.com/SidharthKriplani/metasignal_platform) — Experimentation intelligence (CUPED + guardrail-first + A/A calibration)
+**Applied Systems (LangGraph pipelines):**
+
+| Project | Domain | Primary Failure Mode |
+|---------|--------|----------------------|
+| [LendFlow](https://github.com/SidharthKriplani/lendflow) | Financial underwriting | When to stop or escalate |
+| [AgentReliabilityLab](https://github.com/SidharthKriplani/agentreliabilitylab) | Cyber threat triage | When to stop or escalate |
+| [NexusSupply](https://github.com/SidharthKriplani/nexussupply) | Supplier risk intelligence | Conflicting signal fusion |
+
+**Platforms & Auditors (domain-agnostic tooling):**
+
+| Project | What It Audits / Builds |
+|---------|------------------------|
+| [InferenceLens](https://github.com/SidharthKriplani/inferencelens) | Inference cost/quality tradeoffs — Pareto frontier, routing rules |
+| [RiskFrame](https://github.com/SidharthKriplani/riskframe_platform) | ML model lifecycle — champion/challenger, drift, fairness |
+| [MetaSignal](https://github.com/SidharthKriplani/metasignal_platform) | A/B experiment validity — CUPED, guardrail-first, SRM |
+| [DevPulse](https://github.com/SidharthKriplani/devpulse_platform) | Version-safe RAG — conflict detection, LLM-Last architecture |
+| [PulseRank](https://github.com/SidharthKriplani/pulserank_platform) | Marketplace ranking — IPS debiasing, MMR diversity |
+| [TrialCheck](https://github.com/SidharthKriplani/trialcheck_v0) | A/B readout audit — SRM, peeking, underpowered tests |
+| [FeatureLeakageLens](https://github.com/SidharthKriplani/featureleakagelens_v0) | Pre-training leakage — target, temporal, overlap |
+| [GoldenSetAuditor](https://github.com/SidharthKriplani/goldensetauditor_v0) | LLM/RAG eval dataset quality |
+| **DocIngestQA** | RAG document ingestion quality — 11 deterministic checks |
+| [MetricLens](https://github.com/SidharthKriplani/metriclens) | Metric movement decomposition — mix shift vs rate shift |

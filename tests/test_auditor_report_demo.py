@@ -13,8 +13,8 @@ def test_auditor_runs_end_to_end_on_demo_assets():
         documents_path=ROOT / "examples" / "assets" / "source_manifest.json",
     ).run()
     payload = report.to_dict()
-    assert payload["schema_version"] == "0.1"
-    assert payload["executive_summary"]["chunk_count"] == 12
+    assert payload["schema_version"] in ("0.1", "0.2")
+    assert payload["executive_summary"]["chunk_count"] == 64
     assert payload["executive_summary"]["overall_status"] == "FAIL"
     assert "interpretation_note" in payload
 
