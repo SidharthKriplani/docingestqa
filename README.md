@@ -327,6 +327,12 @@ MIT © Sidharth Kriplani
 
 ---
 
+## Interview Defense
+
+[📄 DocIngestQA_Interview_Defense_v3.pdf](docs/prd/DocIngestQA_Interview_Defense_v3.pdf) — covers all 11 checks in depth, OCR noise detection methodology, split boundary heuristics, and scaling to large corpora.
+
+---
+
 ## How This Connects
 
 DocIngestQA is the **pre-indexing document quality gate** for RAG systems in this portfolio:
