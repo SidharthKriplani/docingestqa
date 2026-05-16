@@ -329,7 +329,7 @@ MIT © Sidharth Kriplani
 
 ## Interview Defense
 
-[📄 DocIngestQA_Interview_Defense_v3.pdf](docs/prd/DocIngestQA_Interview_Defense_v3.pdf) — covers all 11 checks in depth, OCR noise detection methodology, split boundary heuristics, and scaling to large corpora.
+[📄 DocIngestQA_Interview_Defense_v3.pdf](docs/defense/DocIngestQA_Interview_Defense_v3.pdf) — covers all 11 checks in depth, OCR noise detection methodology, split boundary heuristics, and scaling to large corpora.
 
 ---
 
